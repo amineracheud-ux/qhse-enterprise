@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#061321"/>
+<title>QHSE Enterprise</title>
+<link rel="stylesheet" href="/static/styles.css"/>
+</head>
+<body>
+<div id="login" class="login-shell">
+  <div></div>
+  <div class="login-card">
+    <div class="brand-mark">Q</div><h1>QHSE Enterprise</h1><p>People · Compliance · A Safer Tomorrow</p>
+    <label>Organisation<input id="orgCode" value="DEMO"></label>
+    <label>Adresse e-mail<input id="email" value="admin@demo.local"></label>
+    <label>Mot de passe<input id="password" type="password" value="Admin123!"></label>
+    <button id="loginBtn" class="primary">Accéder à la plateforme</button>
+    <div id="loginMsg" class="msg"></div>
+  </div>
+</div>
+<div id="app" class="app-shell hidden">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">Q</div><strong>QHSE Enterprise</strong></div>
+    <nav id="nav"></nav>
+    <div class="sidebar-promo">Des lieux de travail<br><b>plus sûrs</b> pour<br>un avenir durable.</div>
+    <div class="sidebar-foot"><div class="license-badge">ENTERPRISE · ACTIVE</div><button id="logoutBtn" class="ghost">Déconnexion</button></div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div class="global-search"><input id="globalSearch" placeholder="Rechercher un document, un incident, une action..."></div>
+      <div class="top-actions"><button class="org-switcher">QHSE Demo Company</button><button class="notif-btn">♢<span>3</span></button><div class="avatar">AD</div><div class="user-meta"><strong>Administrateur</strong><span>QHSE Manager</span></div></div>
+    </header>
+    <div class="page-head"><div><span class="eyebrow">Bienvenue sur</span><h1 id="pageTitle">QHSE Enterprise</h1><p id="pageSubtitle">Pilotez en temps réel votre performance Qualité, Santé, Sécurité et Environnement</p></div><div class="date-box"><strong id="headerDate"></strong><span id="headerTime"></span></div></div>
+    <section id="content"></section>
+  </main>
+</div>
+<div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle"></h3><button class="btn" onclick="closeModal()">Fermer</button></div><div id="modalBody"></div></div></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
