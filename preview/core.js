@@ -1,0 +1,9 @@
+window.Q={page:"dashboard",editing:null,data:JSON.parse(localStorage.getItem("qhsePreview")||"{}")};
+Q.labels={dashboard:"Tableau de bord",review:"Revue de direction",documents:"Documents",audits:"Audits",actions:"Actions",incidents:"Incidents",stopcards:"STOP Cards",risks:"Risques",nc:"Non-conformités",equipment:"Équipements",training:"Formation",suppliers:"Fournisseurs",meetings:"Réunions",compliance:"Conformité",admin:"Administration"};
+Q.mods=Object.keys(Q.labels);
+Q.save=function(){localStorage.setItem("qhsePreview",JSON.stringify(Q.data))};
+Q.badge=function(s){var c=/clos|publié|valide|conforme|approuvé|terminée|actif/i.test(s)?"ok":/retard|critique|majeure|action/i.test(s)?"danger":/cours|revue|traitement|investigation/i.test(s)?"info":"warn";return '<span class="badge '+c+'">'+String(s).toUpperCase()+'</span>'};
+window.login=function(){if(orgCode.value!=="DEMO"){loginMsg.textContent="Organisation inconnue";return}document.getElementById("login").classList.add("hidden");document.getElementById("app").classList.remove("hidden");Q.go("dashboard")};
+loginBtn.onclick=login;logoutBtn.onclick=function(){location.reload()};
+Q.go=function(p){Q.page=p;document.querySelectorAll(".nav-item").forEach(function(n){n.classList.toggle("active",n.dataset.page===p)});pageTitle.textContent=p==="dashboard"?"QHSE Enterprise":Q.labels[p];pageSubtitle.textContent=p==="dashboard"?"Pilotez en temps réel votre performance Qualité, Santé, Sécurité et Environnement":"Gestion, suivi, preuves et traçabilité du module.";if(p==="dashboard")Q.dashboard();else if(p==="review")Q.review();else Q.module(p)};
+function tick(){var d=new Date();headerDate.textContent=d.toLocaleDateString("fr-FR",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});headerTime.textContent=d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}tick();setInterval(tick,30000);
